@@ -1,8 +1,8 @@
 package simboss
 
 import (
+	"linkortech/my/simboss-golang-sdk/utils"
 	"net/url"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils"
 )
 
 type WxService struct {
@@ -14,7 +14,7 @@ func (s *SmsService) PrePayment(params url.Values) error {
 	if err := RequiredCardId(params); err != nil {
 		return err
 	}
-	if !utils.Required(params,"ratePlanId", "month", "outTradeNo") {
+	if !utils.Required(params, "ratePlanId", "month", "outTradeNo") {
 		return ErrRequired
 	}
 	_, err := s.client.Post("/wx/device/prePayment", params)

@@ -1,10 +1,10 @@
 package simboss
 
 import (
-	"net/url"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils/time"
 	"encoding/json"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils"
+	"linkortech/my/simboss-golang-sdk/utils"
+	"linkortech/my/simboss-golang-sdk/utils/time"
+	"net/url"
 )
 
 type SmsService struct {
@@ -16,7 +16,7 @@ func (s *SmsService) Send(params url.Values) error {
 	if err := RequiredCardId(params); err != nil {
 		return err
 	}
-	if !utils.Required(params,"text") {
+	if !utils.Required(params, "text") {
 		return ErrRequired
 	}
 	_, err := s.client.Post("/sms/send", params)
@@ -27,22 +27,22 @@ func (s *SmsService) Send(params url.Values) error {
 }
 
 type Page struct {
-	PageNo int `json:"pageNo"`
+	PageNo   int `json:"pageNo"`
 	PageSize int `json:"pageSize"`
-	Total int `json:"total"`
+	Total    int `json:"total"`
 }
 
 type Sms struct {
-	Id int64 `json:"id"`
-	Iccid string `json:"iccid"`
-	Carrier string `json:"carrier"`
-	Text string `json:"text"`
+	Id       int64     `json:"id"`
+	Iccid    string    `json:"iccid"`
+	Carrier  string    `json:"carrier"`
+	Text     string    `json:"text"`
 	SendTime time.Time `json:"sendTime"`
-	Type string `json:"type"`
+	Type     string    `json:"type"`
 }
 
 type SmsList struct {
-	Page Page `json:"page"`
+	Page Page  `json:"page"`
 	List []Sms `json:"list"`
 }
 
@@ -51,7 +51,7 @@ func (s *SmsService) List(params url.Values) (*SmsList, error) {
 	if err := RequiredCardId(params); err != nil {
 		return nil, err
 	}
-	if !utils.Required(params,"pageNo") {
+	if !utils.Required(params, "pageNo") {
 		return nil, ErrRequired
 	}
 	smsList := &SmsList{

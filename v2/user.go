@@ -7,23 +7,23 @@ type UserService struct {
 }
 
 type CardSummary struct {
-	Cmcc int `json:"cmcc"`
+	Cmcc   int `json:"cmcc"`
 	Unicom int `json:"unicom"`
 	Telcom int `json:"telcom"`
 }
 
 type Dashboard struct {
-	UserAccount string `json:"userAccount"`
-	Company string `json:"company"`
-	Name string `json:"name"`
-	Balance float64 `json:"balance"`
-	Mobile string `json:"mobile"`
-	RegisterTime string `json:"registerTime"`
-	CardSummary CardSummary `json:"cardSummary"`
+	UserAccount  string      `json:"userAccount"`
+	Company      string      `json:"company"`
+	Name         string      `json:"name"`
+	Balance      float64     `json:"balance"`
+	Mobile       string      `json:"mobile"`
+	RegisterTime string      `json:"registerTime"`
+	CardSummary  CardSummary `json:"cardSummary"`
 }
 
 // 账户总览接口
-func (u * UserService) DashboardGet() (*Dashboard, error) {
+func (u *UserService) DashboardGet() (*Dashboard, error) {
 	dashboard := &Dashboard{}
 	body, err := u.client.Post("/user/dashboard/get", nil)
 	if err != nil {

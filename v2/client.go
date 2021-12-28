@@ -1,17 +1,17 @@
 package simboss
 
 import (
-	"net/http"
-	"fmt"
-	"io/ioutil"
-	"sort"
-	"strings"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
-	"net/url"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils"
 	"errors"
+	"fmt"
+	"io/ioutil"
+	"linkortech/my/simboss-golang-sdk/utils"
+	"net/http"
+	"net/url"
+	"sort"
+	"strings"
 )
 
 const API_ROOT string = "https://api.simboss.com/2.0"
@@ -37,13 +37,13 @@ func RequiredBatchCardId(values url.Values) error {
 type Client struct {
 	appId     string
 	appSecret string
-	httpDo func(*http.Client, *http.Request) (*http.Response, error)
+	httpDo    func(*http.Client, *http.Request) (*http.Response, error)
 	User      UserService
 	Device    DeviceService
 	Pool      PoolService
 	Sms       SmsService
 	Realname  RealnameService
-	Wx	WxService
+	Wx        WxService
 }
 
 func NewClient(appId, appSecret string) *Client {
@@ -54,10 +54,10 @@ func NewClient(appId, appSecret string) *Client {
 }
 
 func NewClientWithHttpDo(appId, appSecret string, httpDo func(*http.Client, *http.Request) (*http.Response, error)) *Client {
-	c :=  &Client{
+	c := &Client{
 		appId:     appId,
 		appSecret: appSecret,
-		httpDo: httpDo,
+		httpDo:    httpDo,
 	}
 	c.User = UserService{c}
 	c.Device = DeviceService{c}
@@ -134,17 +134,17 @@ func (c *Client) Post(path string, data url.Values) ([]byte, error) {
 }
 
 type Response struct {
-	Code string `json:"code"`
-	Data interface{} `json:"data"`
-	Message string `json:"message"`
-	Detail string `json:"detail"`
-	Success bool `json:"success"`
+	Code    string      `json:"code"`
+	Data    interface{} `json:"data"`
+	Message string      `json:"message"`
+	Detail  string      `json:"detail"`
+	Success bool        `json:"success"`
 }
 
 type ResponseError struct {
-	Code string
+	Code    string
 	Message string
-	Detail string
+	Detail  string
 }
 
 func (b ResponseError) Error() string {

@@ -1,48 +1,48 @@
 package simboss
 
 import (
-	"net/url"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils/time"
 	"encoding/json"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils"
-	)
+	"linkortech/my/simboss-golang-sdk/utils"
+	"linkortech/my/simboss-golang-sdk/utils/time"
+	"net/url"
+)
 
 type DeviceService struct {
 	client *Client
 }
 
 type Device struct {
-	Iccid string `json:"iccid"`
-	Imsi string `json:"imsi"`
-	Msisdn string `json:"msisdn"`
-	Carrier string `json:"carrier"`
-	Type string `json:"type"`
-	Status string `json:"status"`
-	DeviceStatus string `json:"deviceStatus"`
-	OpenDate time.Time `json:"openDate"`
-	StartDate string `json:"startDate"`
-	ExpireDate string `json:"expireDate"`
-	LastSyncDate string `json:"lastSyncDate"`
-	ActiveDuration int `json:"activeDuration"`
-	RealnameRequired bool `json:"realnameRequired"`
-	CardPoolId int `json:"cardPoolId"`
-	TestingExpireDate time.Time `json:"testingExpireDate"`
-	RatePlanId int `json:"ratePlanId"`
-	IratePlanName string `json:"iratePlanName"`
-	UsedDataVolume float64 `json:"usedDataVolume"`
-	TotalDataVolume float64 `json:"totalDataVolume"`
-	RatePlanEffetiveDate time.Time `json:"ratePlanEffetiveDate"`
+	Iccid                  string    `json:"iccid"`
+	Imsi                   string    `json:"imsi"`
+	Msisdn                 string    `json:"msisdn"`
+	Carrier                string    `json:"carrier"`
+	Type                   string    `json:"type"`
+	Status                 string    `json:"status"`
+	DeviceStatus           string    `json:"deviceStatus"`
+	OpenDate               time.Time `json:"openDate"`
+	StartDate              string    `json:"startDate"`
+	ExpireDate             string    `json:"expireDate"`
+	LastSyncDate           string    `json:"lastSyncDate"`
+	ActiveDuration         int       `json:"activeDuration"`
+	RealnameRequired       bool      `json:"realnameRequired"`
+	CardPoolId             int       `json:"cardPoolId"`
+	TestingExpireDate      time.Time `json:"testingExpireDate"`
+	RatePlanId             int       `json:"ratePlanId"`
+	IratePlanName          string    `json:"iratePlanName"`
+	UsedDataVolume         float64   `json:"usedDataVolume"`
+	TotalDataVolume        float64   `json:"totalDataVolume"`
+	RatePlanEffetiveDate   time.Time `json:"ratePlanEffetiveDate"`
 	RatePlanExpirationDate time.Time `json:"ratePlanExpirationDate"`
-	DataUsage float64 `json:"dataUsage"`
-	RealName string `json:"realName"`
-	RealNameCertifystatus string `json:"realNameCertifystatus"`
-	Remark string `json:"remark"`
-	Memo string `json:"memo"`
-	Functions []string `json:"functions"`
+	DataUsage              float64   `json:"dataUsage"`
+	RealName               string    `json:"realName"`
+	RealNameCertifystatus  string    `json:"realNameCertifystatus"`
+	Remark                 string    `json:"remark"`
+	Memo                   string    `json:"memo"`
+	Functions              []string  `json:"functions"`
 }
 
 // 批量卡详情
-func (d * DeviceService) DetailBatch(params url.Values) ([]Device, error) {
+func (d *DeviceService) DetailBatch(params url.Values) ([]Device, error) {
 	if err := RequiredBatchCardId(params); err != nil {
 		return nil, err
 	}
@@ -74,18 +74,18 @@ func (d *DeviceService) Detail(params url.Values) (*Device, error) {
 }
 
 type OrderedPlan struct {
-	RatePlanId int `json:"ratePlanId"`
-	Price float64 `json:"price"`
-	TimeLength int `json:"timeLength"`
-	TimeUnit string `json:"timeUnit"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Description string `json:"description"`
-	DataVolume float64 `json:"dataVolume"`
-	UnlimitedVolume bool `json:"unlimitedVolume"`
-	EffectiveDate time.Time `json:"effectiveDate"`
-	ExpirationDate time.Time `json:"expirationDate"`
-	Status string `json:"status"`
+	RatePlanId      int       `json:"ratePlanId"`
+	Price           float64   `json:"price"`
+	TimeLength      int       `json:"timeLength"`
+	TimeUnit        string    `json:"timeUnit"`
+	Name            string    `json:"name"`
+	Type            string    `json:"type"`
+	Description     string    `json:"description"`
+	DataVolume      float64   `json:"dataVolume"`
+	UnlimitedVolume bool      `json:"unlimitedVolume"`
+	EffectiveDate   time.Time `json:"effectiveDate"`
+	ExpirationDate  time.Time `json:"expirationDate"`
+	Status          string    `json:"status"`
 }
 
 // 单卡已订购套餐列表
@@ -105,15 +105,15 @@ func (d *DeviceService) OrderedPlans(params url.Values) ([]OrderedPlan, error) {
 }
 
 type RatePlan struct {
-	RatePlanId int `json:"ratePlanId"`
-	Price float64 `json:"price"`
-	TimeLength int `json:"timeLength"`
-	TimeUnit string `json:"timeUnit"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Description string `json:"description"`
-	DataVolume float64 `json:"dataVolume"`
-	UnlimitedVolume bool `json:"unlimitedVolume"`
+	RatePlanId      int     `json:"ratePlanId"`
+	Price           float64 `json:"price"`
+	TimeLength      int     `json:"timeLength"`
+	TimeUnit        string  `json:"timeUnit"`
+	Name            string  `json:"name"`
+	Type            string  `json:"type"`
+	Description     string  `json:"description"`
+	DataVolume      float64 `json:"dataVolume"`
+	UnlimitedVolume bool    `json:"unlimitedVolume"`
 }
 
 // 单卡可续费套餐信息
@@ -149,18 +149,18 @@ func (d *DeviceService) Recharge(params url.Values) (string, error) {
 }
 
 type RechargeRecord struct {
-	Sequence string `json:"sequence"`
-	OrderName string `json:"orderName"`
-	OrderType string `json:"orderType"`
-	Price float64 `json:"price"`
-	CreateTime time.Time `json:"createTime"`
-	UnlimitedVolume bool `json:"unlimitedVolume"`
-	Period int `json:"period"`
-	TimeLenth int `json:"timeLenth"`
-	TimeUnit string `json:"timeUnit"`
-	DataVolume float64 `json:"dataVolume"`
-	VolumePlanType string `json:"volumePlanType"`
-	VolumePlanName string `json:"volumePlanName"`
+	Sequence        string    `json:"sequence"`
+	OrderName       string    `json:"orderName"`
+	OrderType       string    `json:"orderType"`
+	Price           float64   `json:"price"`
+	CreateTime      time.Time `json:"createTime"`
+	UnlimitedVolume bool      `json:"unlimitedVolume"`
+	Period          int       `json:"period"`
+	TimeLenth       int       `json:"timeLenth"`
+	TimeUnit        string    `json:"timeUnit"`
+	DataVolume      float64   `json:"dataVolume"`
+	VolumePlanType  string    `json:"volumePlanType"`
+	VolumePlanName  string    `json:"volumePlanName"`
 }
 
 // 单卡续费记录
@@ -180,10 +180,10 @@ func (d *DeviceService) RechargeRecords(params url.Values) ([]RechargeRecord, er
 }
 
 type GprsStatus struct {
-	Iccid string `json:"iccid"`
+	Iccid  string `json:"iccid"`
 	IpAddr string `json:"ipAddr"`
 	Status string `json:"status"`
-	Apn string `json:"apn"`
+	Apn    string `json:"apn"`
 }
 
 // 实时连接状态查询
@@ -203,7 +203,7 @@ func (d *DeviceService) GprsStatus(params url.Values) (*GprsStatus, error) {
 }
 
 type UserStatus struct {
-	Iccid string `json:"iccid"`
+	Iccid  string `json:"iccid"`
 	Status string `json:"status"`
 }
 
@@ -224,7 +224,7 @@ func (d *DeviceService) UserStatus(params url.Values) (*UserStatus, error) {
 }
 
 type RunningStatus struct {
-	Iccid string `json:"iccid"`
+	Iccid  string `json:"iccid"`
 	Status string `json:"status"`
 }
 
@@ -245,8 +245,8 @@ func (d *DeviceService) RunningStatus(params url.Values) (*RunningStatus, error)
 }
 
 type RatePlanSummary struct {
-	Iccid string `json:"iccid"`
-	VolumeSummary float64 `json:"volumeSummary"`
+	Iccid          string    `json:"iccid"`
+	VolumeSummary  float64   `json:"volumeSummary"`
 	ExpirationDate time.Time `json:"expirationDate"`
 }
 
@@ -267,7 +267,7 @@ func (d *DeviceService) RatePlanSummary(params url.Values) (*RatePlanSummary, er
 }
 
 // 流量池卡开关网络
-func (d *DeviceService) ModifyDeviceStatus(params url.Values) (error) {
+func (d *DeviceService) ModifyDeviceStatus(params url.Values) error {
 	if err := RequiredCardId(params); err != nil {
 		return err
 	}
@@ -282,8 +282,8 @@ func (d *DeviceService) ModifyDeviceStatus(params url.Values) (error) {
 }
 
 type DailyUsage struct {
-	Usage float64 `json:"usage"`
-	Date time.Date `json:"date"`
+	Usage float64   `json:"usage"`
+	Date  time.Date `json:"date"`
 }
 
 // 日用量查询
@@ -325,14 +325,14 @@ func (d *DeviceService) DailyUsageByDateRange(params url.Values) ([]DailyUsage, 
 }
 
 type DailyUsageWithCardId struct {
-	Usage float64 `json:"usage"`
-	Iccid string `json:"iccid"`
-	Imsi string `json:"imsi"`
-	Msisdn string `json:"msisdn"`
+	Usage  float64 `json:"usage"`
+	Iccid  string  `json:"iccid"`
+	Imsi   string  `json:"imsi"`
+	Msisdn string  `json:"msisdn"`
 }
 
 type DailyUsageBatch struct {
-	Date string `json:"date"`
+	Date           string                 `json:"date"`
 	DailyUsageList []DailyUsageWithCardId `json:"dailyUsageList"`
 }
 
@@ -345,7 +345,7 @@ func (d *DeviceService) DailyUsageBatch(params url.Values) (*DailyUsageBatch, er
 		return nil, ErrRequired
 	}
 	dailyUsageList := &DailyUsageBatch{
-		Date: "",
+		Date:           "",
 		DailyUsageList: make([]DailyUsageWithCardId, 0),
 	}
 	body, err := d.client.Post("/device/dailyUsage/batch", params)
@@ -359,7 +359,7 @@ func (d *DeviceService) DailyUsageBatch(params url.Values) (*DailyUsageBatch, er
 }
 
 // 取消测试期
-func (d *DeviceService) CancelTesting(params url.Values) (error) {
+func (d *DeviceService) CancelTesting(params url.Values) error {
 	if err := RequiredCardId(params); err != nil {
 		return err
 	}
@@ -371,7 +371,7 @@ func (d *DeviceService) CancelTesting(params url.Values) (error) {
 }
 
 // 更新备注
-func (d *DeviceService) MemoUpdate(params url.Values) (error) {
+func (d *DeviceService) MemoUpdate(params url.Values) error {
 	if err := RequiredCardId(params); err != nil {
 		return err
 	}
@@ -386,7 +386,7 @@ func (d *DeviceService) MemoUpdate(params url.Values) (error) {
 }
 
 // 批量更新备注
-func (d *DeviceService) MemoBatchUpdate(params url.Values) (error) {
+func (d *DeviceService) MemoBatchUpdate(params url.Values) error {
 	if err := RequiredBatchCardId(params); err != nil {
 		return err
 	}
@@ -401,13 +401,13 @@ func (d *DeviceService) MemoBatchUpdate(params url.Values) (error) {
 }
 
 type IccidList struct {
-	Page Page `json:"page"`
+	Page Page     `json:"page"`
 	List []string `json:"list"`
 }
 
 // iccid列表查询
 func (d *DeviceService) IccidList(params url.Values) (*IccidList, error) {
-	if !utils.Required(params,"pageNo") {
+	if !utils.Required(params, "pageNo") {
 		return nil, ErrRequired
 	}
 	iccidList := &IccidList{

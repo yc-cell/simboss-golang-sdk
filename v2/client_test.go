@@ -1,15 +1,15 @@
 package simboss
 
 import (
-	"testing"
-			"net/url"
 	"encoding/json"
-	"github.com/simboss-sdk/simboss-golang-sdk/utils"
+	"linkortech/my/simboss-golang-sdk/utils"
+	"net/url"
+	"testing"
 )
 
 func TestClient_sign(t *testing.T) {
 	const appId string = "1001"
-	const  appSecret = "xxxx"
+	const appSecret = "xxxx"
 	client := NewClient(appId, appSecret)
 	data := url.Values{}
 	data.Set("iccid", "1001")
@@ -22,8 +22,8 @@ func TestClient_sign(t *testing.T) {
 
 func TestResponse_Unmarshal(t *testing.T) {
 	resp := Response{
-		Code:    "0",
-		Data:    Pool{Id: 1001},
+		Code: "0",
+		Data: Pool{Id: 1001},
 	}
 
 	respBytes, err := json.Marshal(resp)
