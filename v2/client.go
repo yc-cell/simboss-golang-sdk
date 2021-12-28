@@ -1,13 +1,13 @@
 package simboss
 
 import (
+	"../../simboss-golang-sdk/utils"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"linkortech/my/simboss-golang-sdk/utils"
 	"net/http"
 	"net/url"
 	"sort"
