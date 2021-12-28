@@ -44,6 +44,7 @@ type Client struct {
 	Sms       SmsService
 	Realname  RealnameService
 	Wx        WxService
+	Gps       LocationService
 }
 
 func NewClient(appId, appSecret string) *Client {
@@ -65,6 +66,7 @@ func NewClientWithHttpDo(appId, appSecret string, httpDo func(*http.Client, *htt
 	c.Sms = SmsService{c}
 	c.Realname = RealnameService{c}
 	c.Wx = WxService{c}
+	c.Gps = LocationService{c}
 	return c
 }
 
