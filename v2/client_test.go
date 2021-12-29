@@ -2,8 +2,8 @@ package simboss
 
 import (
 	"encoding/json"
+	"github.com/yc-cell/simboss-golang-sdk/utils"
 	"net/url"
-	"simboss-golang-sdk/utils"
 	"testing"
 )
 

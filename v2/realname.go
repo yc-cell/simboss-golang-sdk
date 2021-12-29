@@ -1,8 +1,8 @@
 package simboss
 
 import (
+	"github.com/yc-cell/simboss-golang-sdk/utils"
 	"net/url"
-	"simboss-golang-sdk/utils"
 )
 
 type RealnameService struct {

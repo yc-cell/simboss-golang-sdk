@@ -2,10 +2,10 @@ package v2
 
 import (
 	"bytes"
+	"github.com/yc-cell/simboss-golang-sdk/v2"
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"simboss-golang-sdk/v2"
 	"strings"
 	"testing"
 )
