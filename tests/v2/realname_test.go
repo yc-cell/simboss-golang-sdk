@@ -1,12 +1,12 @@
 package v2
 
 import (
-	"testing"
-	"net/http"
-	"io/ioutil"
 	"bytes"
-	"github.com/simboss-sdk/simboss-golang-sdk/v2"
+	"io/ioutil"
+	"net/http"
 	"net/url"
+	"simboss-golang-sdk/v2"
+	"testing"
 )
 
 func TestRealname_Sumbit(t *testing.T) {
@@ -19,7 +19,7 @@ func TestRealname_Sumbit(t *testing.T) {
     "data" : ""
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 

@@ -1,12 +1,12 @@
 package v2
 
 import (
-	"testing"
-	"net/http"
-	"io/ioutil"
 	"bytes"
-	"github.com/simboss-sdk/simboss-golang-sdk/v2"
+	"io/ioutil"
+	"net/http"
 	"net/url"
+	"simboss-golang-sdk/v2"
+	"testing"
 )
 
 func TestPool_Detail(t *testing.T) {
@@ -36,7 +36,7 @@ func TestPool_Detail(t *testing.T) {
   "success": true
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -132,7 +132,7 @@ func TestPool_List(t *testing.T) {
   "success": true
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 

@@ -1,13 +1,13 @@
 package v2
 
 import (
-	"testing"
-	"net/http"
-	"io/ioutil"
 	"bytes"
-	"github.com/simboss-sdk/simboss-golang-sdk/v2"
+	"io/ioutil"
+	"net/http"
 	"net/url"
+	"simboss-golang-sdk/v2"
 	"strings"
+	"testing"
 )
 
 func TestDevice_DetailBatch(t *testing.T) {
@@ -79,7 +79,7 @@ func TestDevice_DetailBatch(t *testing.T) {
   "success": true
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -163,7 +163,7 @@ func TestDevice_Detail(t *testing.T) {
   }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -229,7 +229,7 @@ func TestDevice_OrderPlans(t *testing.T) {
   ]
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -294,7 +294,7 @@ func TestDevice_Rateplans(t *testing.T) {
   ]
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -344,13 +344,12 @@ func TestDevice_Recharge(t *testing.T) {
   "data": "20170426733333231"
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -396,13 +395,12 @@ func TestDevice_RechargeRecords(t *testing.T) {
     ]
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -456,13 +454,12 @@ func TestDevice_GprsStatus(t *testing.T) {
     }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -507,13 +504,12 @@ func TestDevice_UserStatus(t *testing.T) {
     }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -558,13 +554,12 @@ func TestDevice_RunningStatus(t *testing.T) {
     }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -611,13 +606,12 @@ func TestDevice_RatePlanSummary(t *testing.T) {
     }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -662,13 +656,12 @@ func TestDevice_ModifyDeviceStatus(t *testing.T) {
     "data" : "success"
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -705,13 +698,12 @@ func TestDevice_DailyUsage(t *testing.T) {
     }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -772,13 +764,12 @@ func TestDevice_DailyUsageByDateRange(t *testing.T) {
      ]
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -835,13 +826,12 @@ func TestDevice_CancelTesting(t *testing.T) {
     "data": "success"
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 
@@ -869,7 +859,7 @@ func TestDevice_MemoUpdate(t *testing.T) {
     "data": "success"
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -919,13 +909,12 @@ func TestDevice_MemoBatchUpdate(t *testing.T) {
     "data": "success"
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
 		return &resp, nil
 	}
-
 
 	client := simboss.NewClientWithHttpDo(appId, appSecret, httpDo)
 

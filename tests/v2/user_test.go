@@ -1,11 +1,11 @@
 package v2
 
 import (
-	"testing"
-	"net/http"
-	"io/ioutil"
 	"bytes"
-	"github.com/simboss-sdk/simboss-golang-sdk/v2"
+	"io/ioutil"
+	"net/http"
+	"simboss-golang-sdk/v2"
+	"testing"
 )
 
 func TestUser_DashboardGet(t *testing.T) {

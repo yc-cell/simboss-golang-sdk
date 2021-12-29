@@ -1,13 +1,13 @@
 package v2
 
 import (
-	"testing"
-	"net/http"
-	"github.com/simboss-sdk/simboss-golang-sdk/v2"
-	"net/url"
-	"io/ioutil"
 	"bytes"
-	)
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"simboss-golang-sdk/v2"
+	"testing"
+)
 
 func TestSms_Send(t *testing.T) {
 	httpDo := func(_ *http.Client, req *http.Request) (*http.Response, error) {
@@ -18,7 +18,7 @@ func TestSms_Send(t *testing.T) {
     "detail":""
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
@@ -68,7 +68,7 @@ func TestSms_List(t *testing.T) {
     }
 }`
 		resp := http.Response{
-			Body: ioutil.NopCloser(bytes.NewBufferString(msg)),
+			Body:       ioutil.NopCloser(bytes.NewBufferString(msg)),
 			StatusCode: 200,
 		}
 
