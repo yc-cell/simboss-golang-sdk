@@ -1,8 +1,8 @@
 package simboss
 
 import (
-	"linkortech/my/simboss-golang-sdk/utils"
 	"net/url"
+	"simboss-golang-sdk/utils"
 )
 
 type WxService struct {

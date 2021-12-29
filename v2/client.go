@@ -1,7 +1,6 @@
 package simboss
 
 import (
-	"../../simboss-golang-sdk/utils"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -10,6 +9,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"simboss-golang-sdk/utils"
 	"sort"
 	"strings"
 )

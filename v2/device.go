@@ -1,10 +1,10 @@
 package simboss
 
 import (
-	"../../simboss-golang-sdk/utils"
-	"../../simboss-golang-sdk/utils/time"
 	"encoding/json"
 	"net/url"
+	"simboss-golang-sdk/utils"
+	"simboss-golang-sdk/utils/time"
 )
 
 type DeviceService struct {

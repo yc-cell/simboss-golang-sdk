@@ -2,9 +2,9 @@ package simboss
 
 import (
 	"encoding/json"
-	"linkortech/my/simboss-golang-sdk/utils"
-	"linkortech/my/simboss-golang-sdk/utils/time"
 	"net/url"
+	"simboss-golang-sdk/utils"
+	"simboss-golang-sdk/utils/time"
 )
 
 type SmsService struct {
