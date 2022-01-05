@@ -435,3 +435,87 @@ func (d *DeviceService) Activate(params url.Values) error {
 	}
 	return nil
 }
+
+//新增
+// 批量卡可续费套餐信息查询
+type RatePlanBatch struct {
+	TimeLength       int     `json:"timeLength"`
+	Price            float64 `json:"price"`
+	DataVolume       float64 `json:"dataVolume"`
+	RechargeUnit     int     `json:"rechargeUnit"`
+	NetworkFee       float64 `json:"networkFee"`
+	RatePlanId       int     `json:"ratePlanId"`
+	Name             string  `json:"name"`
+	UseCountAsVolume bool    `json:"useCountAsVolume"`
+	UnlimitedVolume  bool    `json:"unlimitedVolume"`
+	Description      string  `json:"description"`
+	Type             string  `json:"type"`
+	TimeUnit         string  `json:"timeUnit"`
+}
+
+func (d *DeviceService) RateplansBatch(params url.Values) ([]RatePlanBatch, error) {
+	if err := RequiredBatchCardId(params); err != nil {
+		return nil, err
+	}
+	ratePlanBatchList := make([]RatePlanBatch, 0)
+	body, err := d.client.Post("device/rateplans/batch", params)
+	if err != nil {
+		return nil, err
+	}
+	if err := json.Unmarshal(body, &ratePlanBatchList); err != nil {
+		return nil, err
+	}
+	return ratePlanBatchList, nil
+}
+
+//批量卡续费
+
+func (d *DeviceService) RechargeBatch(params url.Values) (string, error) {
+	if err := RequiredBatchCardId(params); err != nil {
+		return "", err
+	}
+	cashFlowUuid := ""
+	body, err := d.client.Post("/device/recharge/batch", params)
+	if err != nil {
+		return "", err
+	}
+	if err := json.Unmarshal(body, &cashFlowUuid); err != nil {
+		return "", err
+	}
+	return cashFlowUuid, nil
+}
+
+//批量查询续费记录
+
+type RechargeRecordBatch struct {
+	Iccid           string    `json:"iccid"`
+	Sequence        string    `json:"sequence"`
+	OrderName       string    `json:"orderName"`
+	OrderType       string    `json:"orderType"`
+	Price           float64   `json:"price"`
+	CreateTime      time.Time `json:"createTime"`
+	UnlimitedVolume bool      `json:"unlimitedVolume"`
+	Period          int       `json:"period"`
+	TimeLenth       int       `json:"timeLenth"`
+	TimeUnit        string    `json:"timeUnit"`
+	DataVolume      float64   `json:"dataVolume"`
+	VolumePlanType  string    `json:"volumePlanType"`
+	RechargeUnit    int       `json:"rechargeUnit"`
+	Type            string    `json:"type"`
+	NetworkFee      float64   `json:"networkFee"`
+}
+
+func (d *DeviceService) RechargeRecordsBatch(params url.Values) ([]RechargeRecordBatch, error) {
+	if err := RequiredBatchCardId(params); err != nil {
+		return nil, err
+	}
+	rechargeRecordBatchList := make([]RechargeRecordBatch, 0)
+	body, err := d.client.Post("/device/recharge/records/batch", params)
+	if err != nil {
+		return nil, err
+	}
+	if err := json.Unmarshal(body, &rechargeRecordBatchList); err != nil {
+		return nil, err
+	}
+	return rechargeRecordBatchList, nil
+}
